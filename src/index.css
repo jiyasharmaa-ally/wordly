@@ -2,4 +2,25 @@
 
 @theme {
   --font-wordly: "Patrick Hand", cursive;
+
+  --animate-float: float 3s ease-in-out infinite alternate;
+  --animate-sparkle: sparkle 6s linear infinite;
+
+  @keyframes float {
+    from {
+      transform: translateY(-4px);
+    }
+    to {
+      transform: translateY(4px);
+    }
+  }
+
+  @keyframes sparkle {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
