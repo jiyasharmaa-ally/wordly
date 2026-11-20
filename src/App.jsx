@@ -1,17 +1,15 @@
-
-import './App.css'
-
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './assets/pages/Home'
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-purple-400">
-        WORDLY
-      </h1>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element= {<Home />} />
+
+    </Routes>
+    </BrowserRouter>
   )
 }
-
 
 export default App
