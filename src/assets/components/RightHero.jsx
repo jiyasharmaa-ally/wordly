@@ -4,12 +4,12 @@ import React from 'react'
 const RightHero = () => {
     return (
 
-        <section className="w-full min-w-0 mt-6">
+        <section className="w-full min-w-0 lg:mt-6">
             <div className="relative w-full h-[620px]">
                 {/* W TILE */}
 
                 <div className="
-    w-35 h-35
+    lg:w-35 lg:h-35 w-22 h-22
     flex items-center justify-center
     rounded-4xl
     border border-green-300/60
@@ -21,7 +21,7 @@ const RightHero = () => {
      animate-float
 transition-transform duration-100
 hover:rotate-0
-    absolute top-[10%] left-[10%]
+    absolute lg:top-[10%] lg:left-[10%] top-[8%] left-[15%]
 ">
                     W
                 </div>
@@ -35,7 +35,7 @@ hover:rotate-0
 
                 {/* O TILE */}
                 <div className="
-    w-35 h-35
+    lg:w-35 lg:h-35 w-22 h-22
     flex items-center justify-center
     rounded-4xl
     border border-indigo-300/60
@@ -54,7 +54,7 @@ hover:rotate-0
 
                 {/* R TILE */}
                 <div className="
-    w-35 h-35
+    lg:w-35 lg:h-35 w-22 h-22
     flex items-center justify-center
     rounded-4xl
     border border-yellow-300/60
@@ -66,14 +66,14 @@ hover:rotate-0
      animate-float
 transition-transform duration-100
 hover:rotate-0
-    absolute 	top-[20%] right-[8%]
+    absolute 	lg:top-[20%] lg:right-[8%] top-[10%] right-[15%]
 ">
                     R
                 </div>
 
                 {/* D TILE */}
                 <div className="
-    w-35 h-35
+    lg:w-35 lg:h-35 w-22 h-22
     flex items-center justify-center
     rounded-4xl
     border border-pink-300/60
@@ -85,14 +85,14 @@ hover:rotate-0
    animate-float
 transition-transform duration-100
 hover:rotate-0
-    absolute bottom-[35%] left-[2%]
+    absolute lg:bottom-[35%] lg:left-[2%] bottom-[58%] left-[15%]
 ">
                     D
                 </div>
 
                 {/* L TILE */}
                 <div className="
-    w-35 h-35
+    lg:w-35 lg:h-35 w-22 h-22
     flex items-center justify-center
     rounded-4xl
     border border-blue-300/60
@@ -104,13 +104,13 @@ hover:rotate-0
    animate-float
 transition-transform duration-100
 hover:rotate-0
-    absolute bottom-[35%] left-[35%]
+    absolute lg:bottom-[35%] lg:left-[35%] bottom-[50%] left-[40%]
 ">
                     L
                 </div>
                 {/* Y TILE */}
                 <div className="
-    w-35 h-35
+    lg:w-35 lg:h-35 w-22 h-22
     flex items-center justify-center
     rounded-4xl
     border border-rose-300/60
@@ -122,7 +122,7 @@ hover:rotate-0
      animate-float
 transition-transform duration-100
 hover:rotate-0
-    absolute bottom-[25%] right-[9%]
+    absolute lg:bottom-[25%] lg:right-[9%] bottom-[55%] right-[15%]
 ">
                     Y
                 </div>
@@ -130,9 +130,9 @@ hover:rotate-0
                 {/* SECOND YELLOW SPARKLE */}
                 <div className="absolute bottom-[2%] right-[8%]">
                     <div className="relative w-20 h-20">
-                        <span className="absolute block rounded-full w-7.5 h-2.25 rotate-150 bg-yellow-400 bottom-72 -right-6 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
-                        <span className="absolute block rounded-full w-7.5 h-2.25 rotate-120 bg-yellow-400 -top-58 -right-2 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
-                        <span className="absolute block rounded-full w-7.5 h-2.25 bg-yellow-400 rotate-0 bottom-67 left-21 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
+                        <span className="absolute block rounded-full w-7.5 h-2.25 lg:rotate-150 rotate-120 bg-yellow-400 lg:bottom-72 lg:-right-6 bottom-106 right-4 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
+                        <span className="absolute block rounded-full w-7.5 h-2.25 lg:rotate-120 rotate-150 bg-yellow-400 lg:-top-58 lg:-right-2 -top-84 -right-1 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
+                        <span className="absolute block rounded-full w-7.5 h-2.25 bg-yellow-400 rotate-0 lg:bottom-67 lg:left-21 bottom-95 left-15 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
                     </div>
                 </div>
 
@@ -140,13 +140,13 @@ hover:rotate-0
                 <div className="relative">
                     <img
                         src="/images/star.png"
-                        className="absolute w-10 h-10 top-5 right-15 drop-shadow-[0_0_8px_rgba(168,85,247,0.9)] animate-sparkle"
+                        className="absolute w-10 h-10 top-5 lg:right-15 right-28 drop-shadow-[0_0_8px_rgba(168,85,247,0.9)] animate-sparkle"
                         alt=""
                     />
 
                     <img
                         src="/images/star.png"
-                        className="absolute w-10 h-10 -bottom-120 left-30 drop-shadow-[0_0_8px_rgba(168,85,247,0.9)] animate-sparkle"
+                        className="absolute w-10 h-10 lg:-bottom-120 lg:left-30 -bottom-80 left-28 drop-shadow-[0_0_8px_rgba(168,85,247,0.9)] animate-sparkle"
                         alt=""
                     />
                 </div>

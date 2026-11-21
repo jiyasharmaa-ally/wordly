@@ -2,7 +2,7 @@ import { Gamepad2, Play, BookOpen } from "lucide-react"
 
 const LeftHero = () => {
     return (
-        <section className="lg:p-4 p-10 lg:px-10 mt-6">
+        <section className="lg:p-4 py-2 px-10  lg:mt-6">
             <div className="flex w-fit lg:mx-0 mx-auto  justify-center p-2 lg:px-5 px-8 uppercase gap-3 border-2 border-transparent rounded-4xl items-center [background:linear-gradient(#111326,#111326)_padding-box,linear-gradient(to_right,#c084fc,#22d3ee)_border-box] ">
                 <Gamepad2 size={40} />
                 <div className='font-wordly text-[#C084FC] font-bold text-2xl lg:text-3xl'>Unlimited word game</div>
