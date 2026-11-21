@@ -3,7 +3,7 @@ import { Sun, Settings } from "lucide-react"
 const Nav = () => {
     return (
         <section>
-            <div className='h-20 lg:px-10 p-4 flex flex-row bg-[#111326] text-white items-center justify-between border-b-1n'>
+            <div className='h-20 lg:px-10 p-4 lg:flex flex-row bg-[#111326] text-white items-center justify-between lg:border-b'>
                 <div className='w-28 h-16'>
                     <img
                         src="/images/logo.png"
@@ -11,7 +11,7 @@ const Nav = () => {
                         className="w-full h-full object-contain"
                     />
                 </div>
-                <div className="hidden lg:block cursor-pointer text-4xl">
+                <div className=" cursor-pointer lg:text-4xl">
                     <nav>
                         <ul className="flex items-center gap-10 font-wordly">
                             <li className="text-[#C084FC] bg-[#29203F] px-3 py-2 rounded-lg">Home</li>
