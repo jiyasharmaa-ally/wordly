@@ -1,6 +1,8 @@
-import { Sun,  Settings } from "lucide-react"
+import { Sun, Settings } from "lucide-react"
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = () => {
+    const location = useLocation();
     return (
         <section className="bg-[#111326] text-white lg:border-b">
 
@@ -41,16 +43,36 @@ const Nav = () => {
                         font-wordly
                         text-lg lg:text-4xl
                     ">
-                        <li className="text-[#C084FC] bg-[#29203F] px-3 py-2 rounded-lg">
+                        <Link
+                            to="/"
+                            className={`${location.pathname === "/"
+                                ? "text-[#C084FC] bg-[#C084FC]/15 px-2 rounded-xl"
+                                : "hover:text-[#22D3EE]"
+                                } transition-all duration-200`}
+                        >
                             Home
-                        </li>
+                        </Link>
 
-                        <li className="hover:text-[#22D3EE] transition-colors duration-200">
+                        <Link
+                            to="/how-to-play"
+                            className={`${location.pathname === "/how-to-play"
+                                ? "text-[#22D3EE] bg-[#22D3EE]/15 px-2 rounded-xl"
+                                : "hover:text-[#22D3EE]"
+                                } transition-all duration-200`}
+                        >
                             How To Play
-                        </li>
+                        </Link>
 
-                        <li className="hover:text-[#F472B6] transition-colors duration-200">
-                            Stats
+                        <li>
+                            <Link
+                                to="/stats"
+                                className={`${location.pathname === "/stats"
+                                    ? "text-[#F472B6] bg-[#F472B6]/15 px-2 rounded-xl"
+                                    : "hover:text-[#F472B6]"
+                                    } transition-all duration-200`}
+                            >
+                                Stats
+                            </Link>
                         </li>
                     </ul>
                 </nav>

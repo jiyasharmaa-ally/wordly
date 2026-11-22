@@ -4,7 +4,7 @@ import React from 'react'
 const RightHero = () => {
     return (
 
-        <section className="w-full min-w-0 lg:mt-6">
+        <section className="w-full min-w-0 lg:mt-6 max-[376px]:hidden ">
             <div className="relative w-full h-[620px]">
                 {/* W TILE */}
 

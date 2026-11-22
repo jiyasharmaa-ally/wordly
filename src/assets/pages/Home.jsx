@@ -1,5 +1,5 @@
-import HeroSection from "../components/HeroSection"
-import Nav from "../components/Nav"
+import HeroSection from "../components/home/HeroSection"
+import Nav from "../components/home/Nav"
 
 const Home = () => {
   return (
