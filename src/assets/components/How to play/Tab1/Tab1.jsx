@@ -6,7 +6,7 @@ const Tab1 = () => {
         <section className="
             relative
             w-full
-            h-[240px]
+            h-[235px]
             p-5
             border border-purple-400/80
             rounded-3xl
@@ -26,7 +26,7 @@ const Tab1 = () => {
                     01
                 </span>
 
-                <p className="font-wordly text-2xl font-bold tracking-wide">
+                <p className="font-wordly text-3xl font-bold tracking-wide">
                     Make your guess
                 </p>
             </div>
@@ -34,17 +34,16 @@ const Tab1 = () => {
             {/* Description */}
             <p className="
                 font-wordly text-xl
-                text-center
-                mt-3
+                text-center -mt-1
             ">
                 Type any valid five-letter word.
             </p>
 
             {/* Yellow decorative strips */}
             <div className="absolute top-[46%] right-[8%] w-10 h-10">
-                <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-12 -top-2 left-4"></span>
-                <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-45 -top-1 left-8"></span>
-                <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-75 top-3 left-9"></span>
+                <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-12 -top-6 left-4"></span>
+                <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-45 -top-5 left-8"></span>
+                <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-75 -top-1 left-10"></span>
             </div>
 
             {/* Letter tiles */}

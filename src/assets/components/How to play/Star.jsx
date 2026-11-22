@@ -5,7 +5,7 @@ const Star = () => {
     <div className='relative'>
       <img
         src="/images/star.png"
-        className="absolute w-7 h-7 top-20 left-15 drop-shadow-[0_0_8px_rgba(168,85,247,0.9)] animate-sparkle"
+        className="absolute w-7 h-7 top-15 left-15 drop-shadow-[0_0_8px_rgba(168,85,247,0.9)] animate-sparkle"
         alt=""
       />
     </div>

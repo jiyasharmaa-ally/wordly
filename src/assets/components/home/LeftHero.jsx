@@ -26,7 +26,8 @@ const LeftHero = () => {
             <div className="px-5 p-2 ">
                 <div className="flex flex-col lg:flex-row items-center lg:justify-start justify-center gap-3">
                     <div className="lg:px-7 lg:p-3 p-2 px-15 justify-center flex  items-center gap-4 border rounded-2xl bg-[#964add] border-transparent w-fit hover:bg-[#A855F7]">
-                        <Play size={35} />
+                        <Play size={35} strokeWidth={3}
+                        fill="white" />
                         <button className="lg:text-3xl justify-center text-2xl w-full font-bold font-wordly lg:tracking-wider uppercase cursor-pointer hover:scale-105 transition-all duration-200">
                             Play Now
                         </button>
