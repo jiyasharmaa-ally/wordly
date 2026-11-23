@@ -34,7 +34,7 @@ const Tab2 = () => {
             {/* Description */}
             <p className="
                 font-wordly text-lg
-                text-center -mt-2 tracking-wide mb-2
+                ps-14 -mt-2 tracking-wide mb-2
             ">
                 Every color gives you a clue.
             </p>

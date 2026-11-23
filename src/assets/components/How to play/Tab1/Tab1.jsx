@@ -6,7 +6,7 @@ const Tab1 = () => {
         <section className="
             relative
             w-full
-            h-[235px]
+            lg:h-[235px] h-[200px]
             p-5
             border border-purple-400/80
             rounded-3xl
@@ -34,13 +34,13 @@ const Tab1 = () => {
             {/* Description */}
             <p className="
                 font-wordly text-xl
-                text-center -mt-1
+                ps-16 -mt-1
             ">
                 Type any valid five-letter word.
             </p>
 
             {/* Yellow decorative strips */}
-            <div className="absolute top-[46%] right-[8%] w-10 h-10">
+            <div className="absolute top-[55%] lg:top-[46%] right-[8%] w-10 h-10">
                 <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-12 -top-6 left-4"></span>
                 <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-45 -top-5 left-8"></span>
                 <span className="absolute w-1.5 h-5 bg-yellow-400 rounded-full rotate-75 -top-1 left-10"></span>

@@ -6,7 +6,7 @@ const Tab3 = () => {
     <section className="
             relative
             w-full
-            h-[235px]
+            lg:h-[235px] h-[200px]
             p-5
             border border-purple-400/80
             rounded-3xl
@@ -32,7 +32,7 @@ const Tab3 = () => {
 
            <Number numbers={["1", "2", "3", "4", "5", "6"]}/>
 
-           <p className='font-wordly text-2xl text-center px-5'>Can you solve it before your guesses run out?</p>
+           <p className='font-wordly lg:text-2xl text-xl lg:mt-0 mt-2 text-center px-5'>Can you solve it before your guesses run out?</p>
            
         </section>
   )

@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 import {Play} from "lucide-react"
 
 const LetsPlaybutton = () => {
@@ -7,16 +7,18 @@ const LetsPlaybutton = () => {
 
             <div className="relative">
 
-                <div className="absolute bottom-[2%] right-[8%]">
+                <div className="absolute bottom-[2%] right-[8%] lg:block hidden">
                     <div className="relative w-20 h-20">
-                        <span className="absolute block rounded-full w-5 h-1 lg:rotate-60 rotate-120 bg-yellow-400 lg:bottom-15 lg:right-56 bottom-106 right-4 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
-                        <span className="absolute block rounded-full w-5 h-1 lg:rotate-34 rotate-150 bg-yellow-400 lg:top-6 lg:right-59 -top-84 -right-1 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
+                        <span className="absolute block rounded-full w-5 h-1 lg:rotate-60 rotate-120 bg-yellow-400 lg:bottom-15 lg:right-56 bottom-106 right-4 "></span>
+                        <span className="absolute block rounded-full w-5 h-1 lg:rotate-34 rotate-150 bg-yellow-400 lg:top-6 lg:right-59 -top-84 -right-1 "></span>
 
-                        <span className="absolute block rounded-full w-5 h-1 bg-yellow-400 rotate-10 lg:bottom-9.5 lg:-left-45 bottom-95 left-15 shadow-[0_0_8px_rgba(250,204,21,0.9),0_0_20px_rgba(250,204,21,0.5)]"></span>
+                        <span className="absolute block rounded-full w-5 h-1 bg-yellow-400 rotate-10 lg:bottom-9.5 lg:-left-45 bottom-95 left-15 "></span>
                     </div>
                 </div>
                 {/* Main button */}
-                <button className="
+                <Link
+                to="/play"
+                className="
                     relative
                     flex items-center justify-center gap-5
                     px-6 py-2
@@ -27,7 +29,7 @@ const LetsPlaybutton = () => {
                     hover:scale-105
                     active:scale-95
                     transition-transform duration-200
-                    play-glow
+                    play-glow cursor-pointer
                 ">
 
                     <Play
@@ -42,7 +44,7 @@ const LetsPlaybutton = () => {
                         LET'S PLAY!
                     </span>
 
-                </button>
+                </Link>
 
                 {/* Right purple sparkle */}
                 <span className="absolute animate-sparkle -right-12 top-4 text-purple-400 text-3xl sparkle-right">
