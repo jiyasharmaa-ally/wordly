@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './assets/pages/Home'
-import HowToPlay from './assets/pages/HowToPlay'
-import Stats from './assets/pages/Stats'
-import Play from './assets/pages/Play'
-
+import Home from './pages/Home'
+import HowToPlay from './pages/HowToPlay'
+import Stats from './pages/Stats'
+import Play from './pages/Play'
 function App() {
   return (
     <BrowserRouter>
