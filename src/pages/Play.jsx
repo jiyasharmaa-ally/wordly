@@ -2,8 +2,10 @@ import Nav from "../components/home/Nav"
 import GameGrid from "../components/Play/GameGrid"
 import GameHeader from "../components/Play/GameHeader"
 import Keyboard from "../components/Play/Keyboard"
+import useWordly from "../hooks/usewordly"
 
 const Play = () => {
+   const game =  useWordly()
     return (
         <div className="flex flex-col gap-4 min-w-0">
             <Nav />
@@ -17,11 +19,19 @@ const Play = () => {
     px-6 lg:px-12 xl:px-16
 ">
                 <div className="min-w-0 flex justify-center">
-                    <GameGrid />
+                    <GameGrid 
+                    currentGuess = {game.currentGuess}
+                    currentRow = {game.currentRow}
+                    guesses = {game.guesses}
+                    />
                 </div>
 
                 <div className="min-w-0 flex justify-center">
-                    <Keyboard />
+                    <Keyboard 
+                    addLetter = {game.addLetter}
+                    removeLetter={game.removeLetter}
+                    submitGuess={game.submitGuess}
+                    />
                 </div>
             </div>
         </div>

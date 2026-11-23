@@ -1,6 +1,7 @@
+import { RowsIcon } from 'lucide-react'
 import React from 'react'
 
-const GameGrid = () => {
+const GameGrid = ({ currentGuess, currentRow, guesses }) => {
     const rows = Array.from({ length: 6 })
     const columns = Array.from({ length: 5 })
 
@@ -11,8 +12,13 @@ const GameGrid = () => {
                     {columns.map((_, colIndex) => (
                         <div
                             key={colIndex}
-                            className="w-14 h-14 border border-purple-400 rounded-xl bg-[#211B3B]"
+                            className="flex items-center justify-center w-14 h-14 border text-white text-4xl font-extrabold font-wordly border-purple-400 rounded-xl bg-[#211B3B]"
+
                         >
+                            {rowIndex < guesses.length  ? guesses[rowIndex][colIndex] :
+                            rowIndex === currentRow ? currentGuess[colIndex] :
+                            ""
+                            }
                         </div>
                     ))}
                 </div>

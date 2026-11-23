@@ -1,7 +1,7 @@
 
 import { CornerDownLeft, Delete } from "lucide-react"
 
-const Keyboard = () => {
+const Keyboard = ({addLetter, removeLetter, submitGuess}) => {
     const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
     const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
 
@@ -49,7 +49,7 @@ const Keyboard = () => {
             {/* ROW 1 */}
             <div className={rowStyle}>
                 {firstRow.map(key => (
-                    <button key={key} className={normalKey}>
+                    <button onClick={()=> addLetter(key)} key={key}  className={normalKey}>
                         {key}
                     </button>
                 ))}
@@ -58,7 +58,7 @@ const Keyboard = () => {
             {/* ROW 2 */}
             <div className={`${rowStyle} max-w-[90%]`}>
                 {secondRow.map(key => (
-                    <button key={key} className={normalKey}>
+                    <button onClick={() => addLetter(key)} key={key} className={normalKey}>
                         {key}
                     </button>
                 ))}
@@ -71,6 +71,17 @@ const Keyboard = () => {
 
                     return (
                         <button
+                            onClick={() => {
+                                if(key.label === "ENTER") {
+                                    submitGuess()
+                                }
+                                else if(key.label === "BACKSPACE") {
+                                    removeLetter()
+                                }
+                                else{
+                                    addLetter(key.label)
+                                }
+                            }}
                             key={key.label}
                             aria-label={key.label}
                             className={key.icon ? specialKey : normalKey}
