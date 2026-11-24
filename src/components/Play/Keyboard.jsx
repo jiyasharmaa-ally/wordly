@@ -1,9 +1,15 @@
 
 import { CornerDownLeft, Delete } from "lucide-react"
 
-const Keyboard = ({addLetter, removeLetter, submitGuess}) => {
+const Keyboard = ({ addLetter, removeLetter, submitGuess, keyboardColors }) => {
     const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
     const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
+
+    const keyColorClasses = {
+        green: "bg-green-600 border-green-500",
+        yellow: "bg-yellow-500 border-yellow-400",
+        gray: "bg-gray-600 border-gray-500"
+    }
 
     const thirdRow = [
         { label: "ENTER", icon: CornerDownLeft },
@@ -48,43 +54,64 @@ const Keyboard = ({addLetter, removeLetter, submitGuess}) => {
 
             {/* ROW 1 */}
             <div className={rowStyle}>
-                {firstRow.map(key => (
-                    <button onClick={()=> addLetter(key)} key={key}  className={normalKey}>
-                        {key}
-                    </button>
-                ))}
+                {firstRow.map(key => {
+                    const color = keyboardColors[key]
+
+                    return (
+                        <button
+                            onClick={() => addLetter(key)}
+                            key={key}
+                            className={`${normalKey} ${color ? `bg-none ${keyColorClasses[color]}` : ""}`}
+                        >
+                            {key}
+                        </button>
+                    )
+                })}
             </div>
 
             {/* ROW 2 */}
             <div className={`${rowStyle} max-w-[90%]`}>
-                {secondRow.map(key => (
-                    <button onClick={() => addLetter(key)} key={key} className={normalKey}>
-                        {key}
-                    </button>
-                ))}
+                {secondRow.map(key => {
+                    const color = keyboardColors[key]
+
+                    return (
+                        <button
+                            onClick={() => addLetter(key)}
+                            key={key}
+                            className={`${normalKey} ${color ? `bg-none ${keyColorClasses[color]}` : ""}`}
+                        >
+                            {key}
+                        </button>
+                    )
+                })}
             </div>
 
             {/* ROW 3 */}
             <div className={rowStyle}>
                 {thirdRow.map(key => {
                     const Icon = key.icon
+                    const color = keyboardColors[key.label]
 
                     return (
                         <button
                             onClick={() => {
-                                if(key.label === "ENTER") {
+                                if (key.label === "ENTER") {
                                     submitGuess()
                                 }
-                                else if(key.label === "BACKSPACE") {
+                                else if (key.label === "BACKSPACE") {
                                     removeLetter()
                                 }
-                                else{
+                                else {
                                     addLetter(key.label)
                                 }
                             }}
                             key={key.label}
                             aria-label={key.label}
-                            className={key.icon ? specialKey : normalKey}
+                            className={
+                                key.icon
+                                    ? specialKey
+                                    : `${normalKey} ${color ? `bg-none ${keyColorClasses[color]}` : ""}`
+                            }
                         >
                             {Icon ? (
                                 <Icon size={22} strokeWidth={2.2} />
