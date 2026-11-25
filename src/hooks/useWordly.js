@@ -63,22 +63,42 @@ const useWordly = () => {
         }
     };
 
-    const evaluateGuess = (guess, secretWord) => {
 
-        const result = []
+    const resetGame = () => {
+        setguesses([]);
+        setcurrentGuess("");
+        setcurrentRow(0);
+        setkeyboardColors({});
+        setguessResults([]);
+        setgameWon(false);
+        setgameLost(false);
+    }
+
+
+    const evaluateGuess = (guess, secretWord) => {
+        const result = [];
+        const remainingLetters = secretWord.split("");
+
         for (let i = 0; i < guess.length; i++) {
             if (guess[i] === secretWord[i]) {
-                result.push("green");
-
-            }
-            else if (secretWord.includes(guess[i]))
-                result.push("yellow");
-            else {
-                result.push("gray");
+                result[i] = "green";
+                remainingLetters.splice(i, 1);
             }
         }
+        for (let i = 0; i < guess.length; i++) {
+            if (result[i] === "green") continue;
+
+            if (remainingLetters.includes(guess[i])) {
+                result[i] = "yellow";
+                const extra = remainingLetters.indexOf(guess[i]);
+                remainingLetters.splice(extra, 1);
+            } else {
+                result[i] = "gray";
+            }
+        }
+
         return result;
-    }
+    };
 
     const checkGuess = () => {
         const isCorrect = currentGuess === secretWord
@@ -96,7 +116,8 @@ const useWordly = () => {
         gameWon,
         gameLost,
         guessResults,
-        keyboardColors
+        keyboardColors,
+        resetGame
     }
 }
 

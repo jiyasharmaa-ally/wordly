@@ -31,3 +31,34 @@ body,
   min-height: 100%;
   background-color: #111326;
 }
+
+
+/* Result Modal Animations */
+
+@keyframes overlayFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-overlay {
+  animation: overlayFade 0.3s ease-out forwards;
+}
+
+.animate-modal {
+  animation: modalPop 0.3s ease-out forwards;
+}

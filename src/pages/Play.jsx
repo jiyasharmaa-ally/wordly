@@ -2,6 +2,7 @@ import Nav from "../components/home/Nav"
 import GameGrid from "../components/Play/GameGrid"
 import GameHeader from "../components/Play/GameHeader"
 import Keyboard from "../components/Play/Keyboard"
+import ResultModal from "../components/Play/ResultModal"
 import useWordly from "../hooks/useWordly"
 
 const Play = () => {
@@ -9,10 +10,14 @@ const Play = () => {
     return (
         <div className="flex flex-col gap-4 min-w-0">
             <Nav />
-            <GameHeader />
+            <GameHeader 
+            resetGame={game.resetGame}
+            currentRow={game.currentRow}    
+            />
             <div className="text-center text-white">
                 {game.gameWon ? "Congratulations you won the game" : game.gameLost ? "Game over, the word was apple" : ""}
             </div>
+           
 
             <div className="
                 grid grid-cols-1 lg:grid-cols-[2fr_3fr]
@@ -39,6 +44,13 @@ const Play = () => {
                     />
                 </div>
             </div>
+            <ResultModal 
+            isOpen={game.gameWon || game.gameLost}
+            gameWon={game.gameWon}
+            secretWord={game.secretWord}
+            currentRow={game.currentRow}
+            resetGame={game.resetGame}
+            />
         </div>
     )
 }

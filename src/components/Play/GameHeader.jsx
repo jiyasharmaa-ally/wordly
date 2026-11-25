@@ -1,7 +1,7 @@
 
-import { Calendar, Lightbulb, ChartColumnBig } from "lucide-react"
+import { Calendar, Lightbulb, ChartColumnBig, RotateCcw } from "lucide-react"
 
-const GameHeader = () => {
+const GameHeader = ({resetGame, currentRow}) => {
     return (
         <section className="text-white flex justify-center px-4">
             <div className="flex items-center justify-center gap-5 lg:gap-10 flex-wrap">
@@ -31,7 +31,7 @@ const GameHeader = () => {
                     shadow-[inset_0_0_12px_rgba(192,132,252,0.25),0_0_12px_rgba(192,132,252,0.2)]
                 ">
                     <span className="text-2xl font-wordly tracking-wide">
-                        Attempt 1 / 6
+                        Attempt {currentRow + 1} / 6
                     </span>
                 </div>
 
@@ -61,6 +61,17 @@ const GameHeader = () => {
                         3
                     </span>
                 </div>
+
+                 <button onClick={resetGame} className="
+                    flex items-center justify-center
+                    w-[60px] h-[58px]
+                    border border-purple-400
+                    rounded-full cursor-pointer
+                    bg-purple-500/10
+                    shadow-[inset_0_0_12px_rgba(192,132,252,0.25),0_0_12px_rgba(192,132,252,0.2)]
+                ">
+                    <RotateCcw  size={28} />
+                </button>
 
                 {/* STATS */}
                 <button className="
