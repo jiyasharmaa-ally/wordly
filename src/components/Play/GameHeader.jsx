@@ -1,7 +1,7 @@
 
 import { Calendar, Lightbulb, ChartColumnBig, RotateCcw } from "lucide-react"
 
-const GameHeader = ({resetGame, currentRow}) => {
+const GameHeader = ({ resetGame, currentRow, getHint, hintUsed }) => {
     return (
         <section className="text-white flex justify-center px-4">
             <div className="flex items-center justify-center gap-5 lg:gap-10 flex-wrap">
@@ -37,32 +37,31 @@ const GameHeader = ({resetGame, currentRow}) => {
 
                 {/* HINT */}
                 <div className="relative">
-                    <button className="
-                        flex items-center justify-center
-                        w-[60px] h-[58px]
-                        border border-purple-400
-                        rounded-full
-                        text-yellow-400 cursor-pointer
-                        bg-purple-500/10
-                        shadow-[inset_0_0_12px_rgba(192,132,252,0.25),0_0_12px_rgba(192,132,252,0.2)]
-                    ">
+                    <button
+                        onClick={getHint}
+                        disabled={hintUsed}
+                        className={`
+        flex items-center justify-center
+        w-[60px] h-[58px]
+        border border-purple-400
+        rounded-full
+        text-yellow-400
+        bg-purple-500/10
+        shadow-[inset_0_0_12px_rgba(192,132,252,0.25),0_0_12px_rgba(192,132,252,0.2)]
+        transition-all duration-200
+        ${hintUsed
+                                ? "opacity-40 cursor-not-allowed"
+                                : "cursor-pointer hover:scale-105 hover:bg-purple-500/20"
+                            }
+    `}
+                    >
                         <Lightbulb size={28} />
                     </button>
 
-                    {/* HINT COUNT */}
-                    <span className="
-                        absolute -top-2 -right-2
-                        flex items-center justify-center
-                        w-7 h-7
-                        rounded-full
-                        bg-[#be41f7]
-                        font-wordly text-lg
-                    ">
-                        3
-                    </span>
+                    
                 </div>
 
-                 <button onClick={resetGame} className="
+                <button onClick={resetGame} className="
                     flex items-center justify-center
                     w-[60px] h-[58px]
                     border border-purple-400
@@ -70,7 +69,7 @@ const GameHeader = ({resetGame, currentRow}) => {
                     bg-purple-500/10
                     shadow-[inset_0_0_12px_rgba(192,132,252,0.25),0_0_12px_rgba(192,132,252,0.2)]
                 ">
-                    <RotateCcw  size={28} />
+                    <RotateCcw size={28} />
                 </button>
 
                 {/* STATS */}

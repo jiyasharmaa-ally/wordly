@@ -62,3 +62,18 @@ body,
 .animate-modal {
   animation: modalPop 0.3s ease-out forwards;
 }
+
+@keyframes toastFadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+}
+
+.animate-toast-out {
+  animation: toastFadeOut 0.35s ease-in forwards;
+}

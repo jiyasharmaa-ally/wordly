@@ -1,7 +1,7 @@
 
 import { CornerDownLeft, Delete } from "lucide-react"
 
-const Keyboard = ({ addLetter, removeLetter, submitGuess, keyboardColors }) => {
+const Keyboard = ({ addLetter, removeLetter, submitGuess, keyboardColors, isChecking, isWordLoading }) => {
     const firstRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
     const secondRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
 
@@ -60,6 +60,7 @@ const Keyboard = ({ addLetter, removeLetter, submitGuess, keyboardColors }) => {
                     return (
                         <button
                             onClick={() => addLetter(key)}
+                          disabled={isChecking || isWordLoading}
                             key={key}
                             className={`${normalKey} ${color ? `bg-none ${keyColorClasses[color]}` : ""}`}
                         >
@@ -77,6 +78,7 @@ const Keyboard = ({ addLetter, removeLetter, submitGuess, keyboardColors }) => {
                     return (
                         <button
                             onClick={() => addLetter(key)}
+                            disabled={isChecking || isWordLoading}
                             key={key}
                             className={`${normalKey} ${color ? `bg-none ${keyColorClasses[color]}` : ""}`}
                         >
@@ -94,7 +96,9 @@ const Keyboard = ({ addLetter, removeLetter, submitGuess, keyboardColors }) => {
 
                     return (
                         <button
+                            disabled={isChecking || isWordLoading}
                             onClick={() => {
+
                                 if (key.label === "ENTER") {
                                     submitGuess()
                                 }
