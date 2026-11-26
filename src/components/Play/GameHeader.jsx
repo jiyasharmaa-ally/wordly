@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 import { Calendar, Lightbulb, ChartColumnBig, RotateCcw } from "lucide-react"
 
 const GameHeader = ({ resetGame, currentRow, getHint, hintUsed }) => {
@@ -73,7 +73,9 @@ const GameHeader = ({ resetGame, currentRow, getHint, hintUsed }) => {
                 </button>
 
                 {/* STATS */}
-                <button className="
+                <Link 
+                to='/stats'
+                className="
                     flex items-center justify-center
                     w-[60px] h-[58px]
                     border border-purple-400
@@ -82,7 +84,7 @@ const GameHeader = ({ resetGame, currentRow, getHint, hintUsed }) => {
                     shadow-[inset_0_0_12px_rgba(192,132,252,0.25),0_0_12px_rgba(192,132,252,0.2)]
                 ">
                     <ChartColumnBig size={28} />
-                </button>
+                </Link>
 
             </div>
         </section>

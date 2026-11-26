@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const useWordly = () => {
     const [currentGuess, setcurrentGuess] = useState("");
@@ -15,6 +15,20 @@ const useWordly = () => {
     const [error, setError] = useState("");
     const [hintUsed, setHintUsed] = useState(false);
     const [hintMessage, setHintMessage] = useState("");
+
+    // Load saved game history from localStorage
+    const [gameHistory, setGameHistory] = useState(() => {
+        try {
+            const savedHistory = localStorage.getItem("wordlyGameHistory");
+            return savedHistory ? JSON.parse(savedHistory) : [];
+        } catch (err) {
+            console.error("Error loading game history:", err);
+            return [];
+        }
+    });
+
+    // Prevent the same game from being saved twice
+    const gameSavedRef = useRef(false);
 
     // Fetch a random five-letter word
     const getRandomWord = async () => {
@@ -65,6 +79,18 @@ const useWordly = () => {
         fetchWord();
     }, []);
 
+    // Save game history to localStorage whenever it changes
+    useEffect(() => {
+        try {
+            localStorage.setItem(
+                "wordlyGameHistory",
+                JSON.stringify(gameHistory)
+            );
+        } catch (err) {
+            console.error("Error saving game history:", err);
+        }
+    }, [gameHistory]);
+
     // Add a letter
     const addLetter = (letter) => {
         if (
@@ -107,6 +133,22 @@ const useWordly = () => {
             setError("Unable to check the word. Please try again.");
             return null;
         }
+    };
+
+    // Calculate score
+    const calculateScore = (attempts, won) => {
+        if (!won) return 0;
+
+        const scores = {
+            1: 100,
+            2: 80,
+            3: 60,
+            4: 40,
+            5: 25,
+            6: 10,
+        };
+
+        return scores[attempts] || 0;
     };
 
     // Submit guess
@@ -173,8 +215,34 @@ const useWordly = () => {
         setcurrentGuess("");
     };
 
+    // Save completed game to history
+    useEffect(() => {
+        if ((!gameWon && !gameLost) || gameSavedRef.current) {
+            return;
+        }
+
+        gameSavedRef.current = true;
+
+        const attempts = currentRow;
+        const result = gameWon ? "Won" : "Lost";
+
+        const newGame = {
+            id: Date.now(),
+            word: secretWord,
+            result,
+            attempts,
+            score: calculateScore(attempts, gameWon),
+            date: new Date().toISOString(),
+        };
+
+        setGameHistory(prevHistory => [newGame, ...prevHistory]);
+
+    }, [gameWon, gameLost]);
+
     // Reset game and fetch a new word
     const resetGame = async () => {
+        gameSavedRef.current = false;
+
         setIsWordLoading(true);
         setsecretWord("");
         setError("");
@@ -186,6 +254,8 @@ const useWordly = () => {
         setguessResults([]);
         setgameWon(false);
         setgameLost(false);
+        setHintUsed(false);
+        setHintMessage("");
 
         const newWord = await getRandomWord();
 
@@ -232,6 +302,8 @@ const useWordly = () => {
     const checkGuess = () => {
         return currentGuess === secretWord;
     };
+
+    // Get hint
     const getHint = () => {
         if (hintUsed || !secretWord || isWordLoading || gameWon || gameLost) {
             return;
@@ -260,14 +332,16 @@ const useWordly = () => {
             return;
         }
 
-        const randomIndex = Math.floor(Math.random() * availablePositions.length);
+        const randomIndex = Math.floor(
+            Math.random() * availablePositions.length
+        );
+
         const position = availablePositions[randomIndex];
 
         setHintMessage(
             `The ${["first", "second", "third", "fourth", "fifth"][position]} letter is ${secretWord[position]}!`
         );
 
-        // Automatically clear hint after 2.5 seconds
         setTimeout(() => {
             setHintMessage("");
         }, 2500);
@@ -295,6 +369,7 @@ const useWordly = () => {
         getHint,
         hintUsed,
         hintMessage,
+        gameHistory,
     };
 };
 

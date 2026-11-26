@@ -28,7 +28,7 @@ const GameGrid = ({ currentGuess, currentRow, guesses = [], guessResults = [] })
                         return (
                             <div
                                 key={colIndex}
-                                className={`flex items-center justify-center w-14 h-14 border text-white text-4xl font-extrabold font-wordly rounded-xl ${colorClasses[color] || "bg-[#211B3B] border-purple-400"}`}
+                                className={`flex items-center justify-center w-13 h-13 border text-white text-4xl font-extrabold font-wordly rounded-xl ${colorClasses[color] || "bg-[#211B3B] border-purple-400"}`}
                             >
                                 {letter}
                             </div>

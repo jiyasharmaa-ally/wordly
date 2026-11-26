@@ -50,7 +50,7 @@ const Keyboard = ({ addLetter, removeLetter, submitGuess, keyboardColors, isChec
     const rowStyle = "flex w-full justify-center gap-1 sm:gap-1.5 lg:gap-2"
 
     return (
-        <div className="w-full min-w-0 flex flex-col items-center gap-2.5 text-white lg:mt-0 mt-10">
+        <div className="w-full min-w-0 flex flex-col items-center gap-2.5 text-white lg:mt-0 mt-12">
 
             {/* ROW 1 */}
             <div className={rowStyle}>

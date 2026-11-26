@@ -46,7 +46,7 @@ const Play = () => {
                 </div>
                 {(game.error || game.hintMessage) && (
                     <div
-                        className={`fixed right-55 top-54 z-50 -translate-x-1/2 rounded-xl border px-6 py-3 shadow-lg animate-overlay ${game.hintMessage
+                        className={`fixed lg:right-55 right-15 lg:top-54 top-165  z-50 -translate-x-1/2 rounded-xl border px-6 py-3 shadow-lg animate-overlay ${game.hintMessage
                                 ? "border-purple-400/30 bg-[#251522]"
                                 : "border-red-400/30 bg-[#251522]"
                             }`}
