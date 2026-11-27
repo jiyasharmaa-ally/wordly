@@ -1,32 +1,91 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const OverviewCards = () => {
+    const [gameHistory, setGameHistory] = useState([]);
+
+    // Load saved game history
+    useEffect(() => {
+        try {
+            const savedHistory = localStorage.getItem("wordlyGameHistory");
+
+            if (savedHistory) {
+                const parsedHistory = JSON.parse(savedHistory);
+
+                if (Array.isArray(parsedHistory)) {
+                    setGameHistory(parsedHistory);
+                }
+            }
+        } catch (error) {
+            console.error("Error loading statistics:", error);
+        }
+    }, []);
+
+    // Calculate Games Played
+    const gamesPlayed = gameHistory.length;
+
+    // Calculate Win Rate
+    const totalWins = gameHistory.filter(
+        (game) => game.result === "Won"
+    ).length;
+
+    const winRate = gamesPlayed
+        ? Math.round((totalWins / gamesPlayed) * 100)
+        : 0;
+
+    // Calculate Current Streak
+    let currentStreak = 0;
+
+    for (const game of gameHistory) {
+        if (game.result === "Won") {
+            currentStreak++;
+        } else {
+            break;
+        }
+    }
+
+    // Calculate Best Streak
+    let bestStreak = 0;
+    let streak = 0;
+
+    // History is newest first, so reverse it for chronological calculation
+    const chronologicalHistory = [...gameHistory].reverse();
+
+    chronologicalHistory.forEach((game) => {
+        if (game.result === "Won") {
+            streak++;
+            bestStreak = Math.max(bestStreak, streak);
+        } else {
+            streak = 0;
+        }
+    });
+
+    // Overview cards
     const stats = [
         {
             title: "Games Played",
-            value: "24",
+            value: gamesPlayed,
             icon: "🎮",
             color: "text-purple-300",
             border: "border-purple-400/20"
         },
         {
             title: "Win Rate",
-            value: "75%",
+            value: `${winRate}%`,
             icon: "🏆",
             color: "text-cyan-300",
             border: "border-cyan-400/20"
         },
         {
             title: "Current Streak",
-            value: "4",
+            value: currentStreak,
             icon: "🔥",
             color: "text-pink-300",
             border: "border-pink-400/20"
         },
         {
             title: "Best Streak",
-            value: "9",
+            value: bestStreak,
             icon: "⚡",
             color: "text-yellow-300",
             border: "border-yellow-400/20"
@@ -44,7 +103,10 @@ const OverviewCards = () => {
                         <p className="text-xs sm:text-sm text-gray-400">
                             {stat.title}
                         </p>
-                        <span className="text-xl">{stat.icon}</span>
+
+                        <span className="text-xl">
+                            {stat.icon}
+                        </span>
                     </div>
 
                     <h2 className={`mt-4 text-3xl sm:text-4xl font-bold font-wordly ${stat.color}`}>
